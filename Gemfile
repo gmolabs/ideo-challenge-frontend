@@ -7,7 +7,7 @@ git_source(:github) do |repo_name|
 end
 
 gem 'rails', '~> 5.1.6'
-gem 'sqlite3'
+gem 'sqlite3', '~> 1.3', '< 1.4'
 
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'bootstrap_form'
@@ -27,6 +27,7 @@ group :development, :test do
   gem 'faker'
   gem 'pry-rails'
   gem 'rspec-rails'
+  gem 'rspec'
 end
 
 group :development do
