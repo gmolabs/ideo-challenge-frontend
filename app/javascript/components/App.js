@@ -19,14 +19,12 @@ class App extends Component {
     } else if (dataFetch.rejected) {
       return <Error error={dataFetch.reason}/>
     } else if (dataFetch.fulfilled) {
+      console.log(dataFetch.value)
       return (
         <div className="row">
           <div className="col-md-12">
             <StyledHeader>Creative Qualities</StyledHeader>
-            <div>{JSON.stringify(dataFetch)}</div>
-            <CreativeQuality></CreativeQuality>
-            <CreativeQuality></CreativeQuality>
-            <CreativeQuality></CreativeQuality>
+            {dataFetch.value.map(obj => <CreativeQuality key={obj.id} qualityName={obj.name} qualityColor={obj.color} qualityDescription={obj.description}></CreativeQuality>)}
           </div>
         </div>
       )

@@ -15,7 +15,7 @@ class CreativeQuality extends Component {
           <div className="col-md-4">
           <div className="panel">
             <div className="panel-heading">
-              Creative Quality Name
+              {this.props.qualityName}
             </div>
 
             <div className="panel-body">
@@ -27,7 +27,7 @@ class CreativeQuality extends Component {
               </div>
 
               <p>
-                Creative Quality Description
+                {this.props.qualityDescription}
               </p>
             </div>
           </div>
