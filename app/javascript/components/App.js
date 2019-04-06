@@ -24,7 +24,7 @@ class App extends Component {
         <div className="row">
           <div className="col-md-12">
             <StyledHeader>Creative Qualities</StyledHeader>
-            {dataFetch.value.map(obj => <CreativeQuality key={obj.id} qualityName={obj.name} qualityColor={obj.color} qualityDescription={obj.description}></CreativeQuality>)}
+            {dataFetch.value.map(obj => <CreativeQuality key={obj.id} qualityName={obj.name} qualityColor={obj.color} qualityDescription={obj.description} qualityScore={obj.score}></CreativeQuality>)}
           </div>
         </div>
       )

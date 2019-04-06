@@ -23,7 +23,7 @@ class CreativeQuality extends Component {
 
               <div className="score">
                 <small>your score:</small>
-                &mdash;
+                {this.props.qualityScore}
               </div>
 
               <p>
