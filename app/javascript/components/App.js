@@ -8,6 +8,7 @@ export const StyledHeader = styled.h1`
   text-transform: uppercase;
   font-weight: bold;
   text-align: center;
+  margin-bottom: 32px;
 `
 
 class App extends Component {
@@ -19,12 +20,18 @@ class App extends Component {
     } else if (dataFetch.rejected) {
       return <Error error={dataFetch.reason}/>
     } else if (dataFetch.fulfilled) {
-      console.log(dataFetch.value)
+      // console.log(dataFetch.value)
       return (
         <div className="row">
           <div className="col-md-12">
             <StyledHeader>Creative Qualities</StyledHeader>
-            {dataFetch.value.map(obj => <CreativeQuality key={obj.id} qualityName={obj.name} qualityColor={obj.color} qualityDescription={obj.description} qualityScore={obj.score}></CreativeQuality>)}
+            {dataFetch.value.map(obj => 
+              <CreativeQuality key={obj.id} 
+                               qualityName={obj.name} 
+                               qualityColor={obj.color} 
+                               qualityDescription={obj.description} 
+                               qualityScore={obj.score}>
+              </CreativeQuality>)}
           </div>
         </div>
       )
