@@ -4,6 +4,8 @@ import { connect, PromiseState } from 'react-refetch'
 import collaborationImage from '../../assets/images/qualityIcons/collaboration.png'
 import empowermentImage from '../../assets/images/qualityIcons/empowerment.png'
 import purposeImage from '../../assets/images/qualityIcons/purpose.png'
+import ReadMoreLess from './ReadMoreLess'
+
 
 
 export const StyledPanel = styled.div`
@@ -26,6 +28,7 @@ export const StyledPanel = styled.div`
     border-color: #9e5fa0;
   `}
 `
+//^^^not very DRY...TODO: store qualityName and hex as object and map
 
 export const StyledPanelHeading = styled.div`
   color: white;
@@ -58,7 +61,7 @@ export const StyledQuality = styled.div`
   `}
 `
 
-export const StyledP = styled.p`
+export const StyledP = styled.div`
   text-align: left;
   margin-bottom: 3px;
 `
@@ -92,7 +95,7 @@ class CreativeQuality extends Component {
               </StyledScore>
 
               <StyledP>
-                {this.props.qualityDescription}
+                <ReadMoreLess nChars={120} text={this.props.qualityDescription} />
               </StyledP>
             </StyledPanelBody>
           </StyledPanel>
