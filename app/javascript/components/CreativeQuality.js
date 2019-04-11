@@ -30,6 +30,19 @@ export const StyledPanel = styled.div`
 `
 //^^^not very DRY...TODO: store qualityName and hex as object and map
 
+export const StyledBarContainer = styled.div`
+`
+
+export const StyledBarDiv = styled.div`
+  background: ${({qualityColor}) => qualityColor}; 
+  width: ${({qualityScore}) => qualityScore / 2}%; 
+  height: 10px;
+  margin-left: ${({qualityScoreIsPositive}) => qualityScoreIsPositive ? "50%" : "0%" }
+  float: ${({qualityScoreIsPositive}) => qualityScoreIsPositive ? "left" : "right" }
+  clear: both;
+  margin-right: ${({qualityScoreIsPositive}) => qualityScoreIsPositive ? "0%" : "50%" }
+`
+
 export const StyledPanelHeading = styled.div`
   color: white;
   border-radius: 0;
@@ -64,6 +77,7 @@ export const StyledQuality = styled.div`
 export const StyledP = styled.div`
   text-align: left;
   margin-bottom: 3px;
+  clear: both;
 `
 
 export const StyledScore = styled.div`
@@ -93,7 +107,9 @@ class CreativeQuality extends Component {
                 <small>your score:</small>
                 {this.props.qualityScore}
               </StyledScore>
-
+              <StyledBarContainer>
+                <StyledBarDiv qualityScoreIsPositive={this.props.qualityScore >= 0 ? true : false} qualityScore={Math.abs(this.props.qualityScore)} qualityColor={this.props.qualityColor}></StyledBarDiv>
+              </StyledBarContainer>
               <StyledP>
                 <ReadMoreLess nChars={120} text={this.props.qualityDescription} />
               </StyledP>

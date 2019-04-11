@@ -15,7 +15,7 @@ class App extends Component {
 
   constructor(props){
       super(props);
-      this.state = {sortBy : this.nullSort, lastSort : "nullSort", scoreSortIsASC : true, nameSortIsASC : true};
+      this.state = {sortBy : "nullSort", lastSort : "nullSort", scoreSortIsASC : true, nameSortIsASC : true};
   }
 
   sortByScoreASC(a, b) {
@@ -41,25 +41,20 @@ class App extends Component {
   setSort(sortType) {
     console.log("sort type: "+sortType);
     if (sortType == "score") {
-      if(this.state.lastSort == "score") {
-        this.setState({scoreSortIsASC : !this.state.scoreSortIsASC});
-      }
-      if(this.state.scoreSortIsASC) {
-        this.setState({sortBy : this.sortByScoreASC});
+      if(this.state.sortBy == "sortByScoreASC") {
+        //this.setState({scoreSortIsASC : !this.state.scoreSortIsASC});
+        this.setState({sortBy : "sortByScoreDSC"})
       } else {
-        this.setState({sortBy : this.sortByScoreDSC});
+        this.setState({sortBy : "sortByScoreASC"})
       }
-      this.setState({lastSort : "score"});
-    } else if (sortType == "name") {
-      if (this.state.lastSort == "name") {
-        this.setState({nameSortIsASC : !this.state.nameSortIsASC});
-      }
-      if(this.state.nameSortIsASC) {
-        this.setState({sortBy : this.sortByNameASC});
+    }
+    if (sortType == "name") {
+      if(this.state.sortBy == "sortByNameASC") {
+        //this.setState({scoreSortIsASC : !this.state.scoreSortIsASC});
+        this.setState({sortBy : "sortByNameDSC"})
       } else {
-        this.setState({sortBy : this.sortByNameDSC});
+        this.setState({sortBy : "sortByNameASC"})
       }
-      this.setState({lastSort : "name"});
     }
     console.log("now sorting by: "+this.state.sortBy);
     console.log("last sort was: "+this.state.lastSort);
@@ -83,7 +78,7 @@ class App extends Component {
               <button onClick={() => this.setSort("name")}>Sort by name</button>
             </div>
             <StyledHeader>Creative Qualities</StyledHeader>
-              {dataFetch.value.sort(this.state.sortBy).map(obj => 
+              {dataFetch.value.sort(this[this.state.sortBy]).map(obj => 
                 <CreativeQuality key={obj.id} 
                                  qualityName={obj.name} 
                                  qualityColor={obj.color} 
